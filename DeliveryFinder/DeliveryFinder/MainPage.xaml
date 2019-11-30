@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             mc:Ignorable="d"
+             x:Class="DeliveryFinder.MainPage">
+
+    <StackLayout>
+        <Picker x:Name="comboBox" Title="택배사 선택"
+                ItemsSource="{Binding CompanyList}"
+                />
+        <Label Text="운송장 번호 입력"/>
+        <Entry x:Name="Entry"/>
+        <Button x:Name="searchButton" Text="Search" Clicked="searchButton_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
