@@ -12,10 +12,7 @@ namespace DeliveryFinder
     {
         private Dictionary<string, string> DataList = new Dictionary<string, string>();
         private RestClient restClient;
-        private SearchResult SearchResult = new SearchResult();
-       
         public List<string> GetCompanyValues => DataList.Select(x => x.Key).ToList();
-        public SearchResult GetSearchResult => SearchResult;
 
         public SmartDelivery()
         {
@@ -39,8 +36,9 @@ namespace DeliveryFinder
             }
         }
 
-        public void InvoiceSearch(string code, string invoice)
+        public SearchResult InvoiceSearch(string code, string invoice)
         {
+            SearchResult SearchResult = new SearchResult();
             var request = new RestRequest("/api/v1/trackingInfo", Method.GET);
 
             request.AddQueryParameter("t_key", DeliveryAPIData.key);
@@ -49,7 +47,6 @@ namespace DeliveryFinder
 
             var response = restClient.Execute(request);
 
-            
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 XmlDocument doc = new XmlDocument();
@@ -66,8 +63,9 @@ namespace DeliveryFinder
                                                                          , { "배송 시간", i["trans_time"].InnerText}, { "배송 위치", i["trans_where"].InnerText } });
                 
             }
-            else
-                Console.WriteLine("잘못된 정보");
+            SearchResult.ResultStatus = response.StatusCode;
+
+            return SearchResult;
         }
     }
     public class SearchResult
@@ -78,5 +76,6 @@ namespace DeliveryFinder
         public string reciverAddr;
         public string senderName;
         public List<Dictionary<string, string>> trackingDetails = new List<Dictionary<string, string>>();
+        public HttpStatusCode ResultStatus;
     }
 }
