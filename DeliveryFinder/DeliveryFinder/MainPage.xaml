@@ -5,7 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              mc:Ignorable="d"
-             x:Class="DeliveryFinder.MainPage">
+             x:Class="DeliveryFinder.MainPage"
+             >
+    <NavigationPage.TitleView>
+        <Label Text="배송 조회 서비스" HorizontalOptions="Center" VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
 
     <StackLayout>
         <Picker x:Name="comboBox" Title="택배사 선택"

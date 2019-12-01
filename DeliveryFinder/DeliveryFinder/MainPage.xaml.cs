@@ -21,11 +21,20 @@ namespace DeliveryFinder
             BindingContext = new PickerMVVM();
         }
 
-        private void searchButton_Clicked(object sender, EventArgs e)
+        private async void searchButton_Clicked(object sender, EventArgs e)
         {
-            SmartDelivery DeliveryData = new SmartDelivery();
-            DeliveryData.InvoiceSearch(comboBox.SelectedItem.ToString(), Entry.Text);
-            SearchResult Result = DeliveryData.GetSearchResult;
+            if(comboBox.SelectedIndex != -1 && Entry.Text != null)
+            {
+                SmartDelivery DeliveryData = new SmartDelivery();
+                DeliveryData.InvoiceSearch(comboBox.SelectedItem.ToString(), Entry.Text);
+                SearchResult Result = DeliveryData.GetSearchResult;
+            }
+            else
+            {
+                await DisplayAlert("", "모든 정보를 입력해 주세요", "OK");
+            }
+
+            await Navigation.PushAsync(new ResultPage(), true);
         }
     }
 }
