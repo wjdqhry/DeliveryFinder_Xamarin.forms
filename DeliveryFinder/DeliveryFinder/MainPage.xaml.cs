@@ -25,9 +25,7 @@ namespace DeliveryFinder
         {
             if(comboBox.SelectedIndex != -1 && Entry.Text != null)
             {
-                SmartDelivery DeliveryData = new SmartDelivery();
-                SearchResult Result = DeliveryData.InvoiceSearch(comboBox.SelectedItem.ToString(), Entry.Text);
-                await Navigation.PushAsync(new ResultPage(), true);
+                await Navigation.PushAsync(new ResultPage(comboBox.SelectedItem.ToString(), Entry.Text), true);
             }
             else
             {
