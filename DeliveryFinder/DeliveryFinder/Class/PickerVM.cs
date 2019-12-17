@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DeliveryFinder
 {
-    public class PickerMVVM
+    public class PickerVM
     {
         SmartDelivery DeliveryInfo = new SmartDelivery();
         public List<string> CompanyList => DeliveryInfo.GetCompanyValues;
-        public PickerMVVM()
+        public PickerVM()
         {
         }
     }

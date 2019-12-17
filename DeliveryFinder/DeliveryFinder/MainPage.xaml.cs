@@ -18,7 +18,7 @@ namespace DeliveryFinder
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new PickerMVVM();
+            BindingContext = new PickerVM();
         }
 
         private async void searchButton_Clicked(object sender, EventArgs e)
