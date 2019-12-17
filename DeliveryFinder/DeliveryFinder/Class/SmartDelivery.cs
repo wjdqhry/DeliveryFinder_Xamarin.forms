@@ -20,7 +20,7 @@ namespace DeliveryFinder
             GetCompanyLists();
         }
 
-        private void GetCompanyLists()
+        public void GetCompanyLists()
         {
             var request = new RestRequest("/api/v1/companylist", Method.GET);
             request.AddQueryParameter("t_key", DeliveryAPIData.key);
@@ -45,40 +45,34 @@ namespace DeliveryFinder
             request.AddQueryParameter("t_code", DataList[code]);
             request.AddQueryParameter("t_invoice", invoice);
 
-            RestResponse response = restClient.Execute(request) as RestResponse;
+            var response = restClient.Execute(request);
+            SearchResult.httpResult = (int)response.StatusCode;
 
-            try
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                if (response.StatusCode == HttpStatusCode.OK)
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(response.Content);
+                var subDoc = doc["tracking_info"];
+                SearchResult.itemName = subDoc["item_name"].InnerText;
+                SearchResult.reciverAddr = subDoc["reciver_addr"].InnerText;
+                SearchResult.reciverName = subDoc["reciver_name"].InnerText;
+                SearchResult.senderName = subDoc["sender_name"].InnerText;
+
+                XmlNodeList trackingDetails = subDoc.GetElementsByTagName("tracking_details");
+                foreach (XmlNode i in trackingDetails)
                 {
-                    XmlDocument doc = new XmlDocument();
-                    doc.LoadXml(response.Content);
-
-                    var subDoc = doc["tracking_info"];
-                    SearchResult.itemName = subDoc["item_name"].InnerText;
-                    SearchResult.reciverAddr = subDoc["reciver_addr"].InnerText;
-                    SearchResult.reciverName = subDoc["reciver_name"].InnerText;
-                    SearchResult.senderName = subDoc["sender_name"].InnerText;
-
-                    XmlNodeList trackingDetails = subDoc.GetElementsByTagName("tracking_details");
-                    foreach (XmlNode i in trackingDetails)
+                    SearchResult.trackingDetail.Add(new TrackingDetail()
                     {
-                        SearchResult.trackingDetails.Add(new TrackingDetails()
-                        {
-                            transKind = i["trans_kind"].InnerText,
-                            transTelno = i["trans_telno"].InnerText,
-                            transTime = i["trans_time"].InnerText,
-                            transWhere = i["trans_where"].InnerText
-                        });
-                    }
+                        transKind = i["trans_kind"].InnerText,
+                        transTelno = i["trans_telno"].InnerText,
+                        transTime = i["trans_time"].InnerText,
+                        transWhere = i["trans_where"].InnerText,
+                        manName = i["manName"].InnerText,
+                        level = Convert.ToInt32(i["level"].InnerText)
+                    });
                 }
-                SearchResult.ResultStatus = response.StatusCode;
+                SearchResult.trackingDetail.OrderBy(x => x.level);
             }
-            catch(NullReferenceException ex)
-            {
-                SearchResult.exception = ex;
-            }
-
             return SearchResult;
         }
     }
@@ -89,15 +83,16 @@ namespace DeliveryFinder
         public string reciverName;
         public string reciverAddr;
         public string senderName;
-        public List<TrackingDetails> trackingDetails;
-        public NullReferenceException exception;
-        public HttpStatusCode ResultStatus;
+        public List<TrackingDetail> trackingDetail = new List<TrackingDetail>();
+        public int httpResult;
     }
-    public class TrackingDetails
+    public class TrackingDetail
     {
+        public string manName;
         public string transKind;
         public string transTelno;
         public string transTime;
         public string transWhere;
+        public int level;
     }
 }
