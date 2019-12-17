@@ -7,7 +7,7 @@
              x:Class="DeliveryFinder.ResultPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text = "{Binding temName}"
+            <Label Text = "{Binding ItemName}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
