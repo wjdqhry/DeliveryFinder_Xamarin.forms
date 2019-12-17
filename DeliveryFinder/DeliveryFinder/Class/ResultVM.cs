@@ -9,24 +9,17 @@ namespace DeliveryFinder
         SmartDelivery DeliveryData = new SmartDelivery();
         SearchResult Result;
 
-        string ItemName { get; set; }
-        string ReciverName { get; set; }
-        string ReciverAddr { get; set; }
-        string SenderName { get; set; }
-        int HttpResult { get; set; }
-        List<TrackingDetail> Details { get; set; }
+        public string ItemName => Result.itemName;
+        public string ReciverName => Result.reciverName;
+        public string ReciverAddr => Result.reciverAddr;
+        public string SenderName => Result.senderName;
+        public int HttpResult => Result.httpResult;
+        public List<TrackingDetail> Details => Result.trackingDetail;
 
 
         public ResultVM(string company, string invoice)
         {
             Result = DeliveryData.InvoiceSearch(company, invoice);
-
-            ItemName = Result.itemName;
-            ReciverName = Result.reciverName;
-            ReciverAddr = Result.reciverAddr;
-            SenderName = Result.senderName;
-            HttpResult = Result.httpResult;
-            Details = Result.trackingDetail;
         }
     }
 }
