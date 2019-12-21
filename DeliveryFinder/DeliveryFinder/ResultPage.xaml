@@ -12,21 +12,14 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label 
-                Text = "{Binding ItemName}"
-                />
-            <Label 
-                Text = "{Binding ReciverName}"
-                />
-            <Label 
-                Text = "{Binding ReciverAddr}"
-                />
-            <Label 
-                Text = "{Binding SenderName}"
-                />
-            <Label 
-                Text = "{Binding HttpResult}"
-                />
+            <Label Text = "{Binding ItemName}"/>
+            <Label Text = "{Binding ReciverName}"/>
+            <Label Text = "{Binding ReciverAddr}"/>
+            <Label Text = "{Binding SenderName}"/>
+            <Label Text = "{Binding HttpResult}"/>
+            <Grid>
+                <Label Text= "{Binding Details}"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
