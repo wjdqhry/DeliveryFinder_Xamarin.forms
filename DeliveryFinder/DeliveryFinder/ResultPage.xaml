@@ -17,11 +17,28 @@
             <Label Text = "{Binding ReciverAddr}"/>
             <Label Text = "{Binding SenderName}"/>
             <Label Text = "{Binding HttpResult}"/>
-            <Frame CornerRadius="10" Margin="20"  BorderColor="Silver" VerticalOptions = "LayoutOptions.CenterAndExpand">
-                <StackLayout >
-                    
-                </StackLayout>
-            </Frame>
+            <ListView 
+                ItemsSource="{Binding Details}" 
+                HasUnevenRows="True"
+                Margin="20"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="10"
+                                BorderColor="Silver"
+                                Margin="20"
+                                >
+                                <Grid>
+                                    <Label Text="{Binding level}"/>
+                                    <Label Text="{Binding transKind}"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

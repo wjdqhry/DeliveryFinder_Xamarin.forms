@@ -88,11 +88,11 @@ namespace DeliveryFinder
     }
     public class TrackingDetail
     {
-        public string manName;
-        public string transKind;
-        public string transTelno;
-        public string transTime;
-        public string transWhere;
-        public int level;
+        public string manName { get; set; }
+        public string transKind { get; set; }
+        public string transTelno { get; set; }
+        public string transTime { get; set; }
+        public string transWhere { get; set; }
+        public int level { get; set; }
     }
 }
