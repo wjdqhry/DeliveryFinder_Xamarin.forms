@@ -17,9 +17,11 @@
             <Label Text = "{Binding ReciverAddr}"/>
             <Label Text = "{Binding SenderName}"/>
             <Label Text = "{Binding HttpResult}"/>
-            <Grid>
-                <Label Text= "{Binding Details}"/>
-            </Grid>
+            <Frame CornerRadius="10" Margin="20"  BorderColor="Silver" VerticalOptions = "LayoutOptions.CenterAndExpand">
+                <StackLayout >
+                    
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
