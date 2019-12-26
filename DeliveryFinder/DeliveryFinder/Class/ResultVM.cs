@@ -18,9 +18,9 @@ namespace DeliveryFinder
         public List<TrackingDetail> Details => Result.trackingDetail;
 
 
-        public ResultVM(string company, string invoice)
+        public ResultVM(SearchResult searchResult)
         {
-            Result = DeliveryData.InvoiceSearch(company, invoice);
+            Result = searchResult;
         }
     }
 }

@@ -31,8 +31,11 @@
                                 Margin="20"
                                 >
                                 <Grid>
-                                    <Label Text="{Binding level}"/>
-                                    <Label Text="{Binding transKind}"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding transKind}" FontSize="Body"/>
+                                        <Label Text="{Binding transWhere}" FontSize="Caption"/>
+                                        <Label Text="{Binding transTime}" FontSize="Small" TextColor="Silver"/>
+                                    </StackLayout>
                                 </Grid>
                             </Frame>
                         </ViewCell>

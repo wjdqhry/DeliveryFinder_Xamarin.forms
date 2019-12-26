@@ -25,7 +25,17 @@ namespace DeliveryFinder
         {
             if(comboBox.SelectedIndex != -1 && Entry.Text != null)
             {
-                await Navigation.PushAsync(new ResultPage(comboBox.SelectedItem.ToString(), Entry.Text), true);
+                SmartDelivery DeliveryData = new SmartDelivery();
+                SearchResult Result;
+                try
+                {
+                    Result = DeliveryData.InvoiceSearch(comboBox.SelectedItem.ToString(), Entry.Text);
+                    await Navigation.PushAsync(new ResultPage(Result), true);
+                }
+                catch(Exception ex)
+                {
+                    await DisplayAlert("", "운송장 검색 오류", "OK");
+                }
             }
             else
             {

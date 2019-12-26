@@ -14,13 +14,13 @@
         <Grid Padding="50,30,50,10" >
             <Picker x:Name="comboBox" Title="택배사 선택" ItemsSource="{Binding CompanyList}"/>
         </Grid>
-        <Grid BackgroundColor="Azure" Padding="50,0,50,0">
-            <Label Text="운송장 번호 입력"/>
+        <Grid BackgroundColor="Azure" Padding="50,30,50,0">
+            <Label Text="운송장 번호 입력" FontSize="Large" TextColor="Black"/>
         </Grid>
         <Grid BackgroundColor="Azure" Padding="50,0,50,10">
-        <Entry x:Name="Entry"/>
+        <Entry x:Name="Entry" PlaceholderColor="SeaGreen"/>
         </Grid>
-        <Grid Padding="50,0,50,10">
+        <Grid Padding="50,50,50,10" VerticalOptions="Center" HorizontalOptions="Center">
         <Button x:Name="searchButton" BackgroundColor="MediumAquamarine" Text="Search" Clicked="searchButton_Clicked" />
         </Grid>
     </StackLayout>

@@ -13,10 +13,10 @@ namespace DeliveryFinder
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ResultPage : ContentPage
     {
-        public ResultPage(string company, string invoice)
+        public ResultPage(SearchResult searchResult)
         {
             InitializeComponent();
-            BindingContext = new ResultVM(company, invoice);
+            BindingContext = new ResultVM(searchResult);
         }
     }
 }
