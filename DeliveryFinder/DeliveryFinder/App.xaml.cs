@@ -6,11 +6,14 @@ namespace DeliveryFinder
 {
     public partial class App : Application
     {
+        NavigationPage mainPage = new NavigationPage(new MainPage());
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            mainPage.BarBackgroundColor = Color.FromRgb(0x32,0xB8,0xFF);
+
+            MainPage = mainPage;
         }
 
         protected override void OnStart()

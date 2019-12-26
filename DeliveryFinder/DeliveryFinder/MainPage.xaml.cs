@@ -18,6 +18,7 @@ namespace DeliveryFinder
         public MainPage()
         {
             InitializeComponent();
+            
             BindingContext = new PickerVM();
         }
 
