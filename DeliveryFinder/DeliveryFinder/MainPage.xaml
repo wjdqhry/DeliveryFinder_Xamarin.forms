@@ -7,7 +7,7 @@
              x:Class="DeliveryFinder.MainPage"
              >
     <NavigationPage.TitleView>
-        <Label Text="배송 조회 서비스" FontSize="Title" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Label Text="배송 조회 서비스" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" />
     </NavigationPage.TitleView>
 
     <StackLayout>

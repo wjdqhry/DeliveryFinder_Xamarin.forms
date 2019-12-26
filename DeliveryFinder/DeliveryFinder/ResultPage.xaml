@@ -12,15 +12,15 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text = "{Binding ItemName}"/>
-            <Label Text = "{Binding ReciverName}"/>
+            <Label Text = "{Binding ItemName}" FontSize="Title"/>
+            <Label Text = "{Binding ReciverName}" FontSize="Subtitle"/>
+            <Label Text = "{Binding SenderName}" FontSize="Subtitle"/>
             <Label Text = "{Binding ReciverAddr}"/>
-            <Label Text = "{Binding SenderName}"/>
-            <Label Text = "{Binding HttpResult}"/>
             <ListView 
                 ItemsSource="{Binding Details}" 
                 HasUnevenRows="True"
-                Margin="20"
+                BackgroundColor="WhiteSmoke"
+                SeparatorVisibility="None"
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -28,12 +28,12 @@
                             <Frame
                                 CornerRadius="10"
                                 BorderColor="Silver"
-                                Margin="20"
+                                Margin="10"
                                 >
                                 <Grid>
                                     <StackLayout>
-                                        <Label Text="{Binding transKind}" FontSize="Body"/>
-                                        <Label Text="{Binding transWhere}" FontSize="Caption"/>
+                                        <Label Text="{Binding transKind}" FontSize="23"/>
+                                        <Label Text="{Binding transWhere}" FontSize="15"/>
                                         <Label Text="{Binding transTime}" FontSize="Small" TextColor="Silver"/>
                                     </StackLayout>
                                 </Grid>

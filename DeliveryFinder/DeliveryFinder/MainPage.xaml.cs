@@ -34,7 +34,7 @@ namespace DeliveryFinder
                 }
                 catch(Exception ex)
                 {
-                    await DisplayAlert("", "운송장 검색 오류", "OK");
+                    await DisplayAlert("", "검색 오류", "OK");
                 }
             }
             else
