@@ -7,9 +7,7 @@ namespace DeliveryFinder
 {
     public class ResultVM
     {
-        SmartDelivery DeliveryData = new SmartDelivery();
         SearchResult Result;
-
         public string ItemName => Result.itemName;
         public string ReciverName => Result.reciverName;
         public string ReciverAddr => Result.reciverAddr;
