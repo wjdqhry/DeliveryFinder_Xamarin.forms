@@ -30,12 +30,18 @@ namespace DeliveryFinder
                 SmartDelivery DeliveryData = new SmartDelivery();
                 try
                 {
-                    ViewModel.IsBusy = true;
+                    Indicator.IsRunning = true;
+                    Indicator.IsEnabled = true;
+                    Indicator.IsVisible = true;
+
                     SearchResult Result = DeliveryData.InvoiceSearch(comboBox.SelectedItem.ToString(), Entry.Text);
-                    ViewModel.IsBusy = false;
                     await Navigation.PushAsync(new ResultPage(Result), true);
+
+                    Indicator.IsRunning = false;
+                    Indicator.IsEnabled = false;
+                    Indicator.IsVisible = false;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     await DisplayAlert("", "검색 오류", "OK");
                 }
