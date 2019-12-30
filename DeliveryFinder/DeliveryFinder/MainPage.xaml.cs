@@ -15,11 +15,12 @@ namespace DeliveryFinder
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        PickerVM ViewModel = new PickerVM();
         public MainPage()
         {
             InitializeComponent();
-            
-            BindingContext = new PickerVM();
+
+            BindingContext = ViewModel;
         }
 
         private async void searchButton_Clicked(object sender, EventArgs e)
@@ -29,7 +30,9 @@ namespace DeliveryFinder
                 SmartDelivery DeliveryData = new SmartDelivery();
                 try
                 {
+                    ViewModel.IsBusy = true;
                     SearchResult Result = DeliveryData.InvoiceSearch(comboBox.SelectedItem.ToString(), Entry.Text);
+                    ViewModel.IsBusy = false;
                     await Navigation.PushAsync(new ResultPage(Result), true);
                 }
                 catch(Exception ex)

@@ -8,6 +8,7 @@ namespace DeliveryFinder
     {
         SmartDelivery DeliveryInfo = new SmartDelivery();
         public List<string> CompanyList => DeliveryInfo.GetCompanyValues;
+        public bool IsBusy { get; set; }
         public PickerVM()
         {
         }
